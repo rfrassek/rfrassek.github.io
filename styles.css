@@ -1,0 +1,66 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+}
+
+
+header img {
+    margin-bottom: 10px; /* Add margin between the logo and header text */
+}
+
+section {
+    padding: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}  
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+ .tooltip {
+    visibility: hidden;
+    position: absolute;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    white-space: pre-line;
+    
+    /* Adjust positioning */
+    top: 0;
+    left: 40%; /* Adjust the distance to the right */
+}
+
+li {
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px; /* Add margin-top for space at the top of each item */
+    list-style: disc; /* Use disc as the bullet style */
+    margin-left: 20px; /* Adjust the space between the bullet and the text */
+}
+ 
+
+li:hover .tooltip {
+    visibility: visible;
+}
