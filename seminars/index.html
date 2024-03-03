@@ -1,29 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Weekly Scientific Seminar</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="styles.css">
+  <title>Seminars</title>
+  <style>
+    /* Style for the overlay */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+      z-index: 1000; /* Ensure it appears above other content */
+      overflow: auto; /* Enable scrolling if the content is too large */
+    }
+
+    /* Style for the popup */
+    .popup {
+      background-color: #f9f9f9;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    /* Close button style */
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+  </style>
 </head>
 <body>
-    <header>
+ <header>
     <img src="https://www.fim.unimore.it/contents/instance201/images/Sigillo2015.svg" alt="University of Modena and Reggio Emilia Logo" height="80">
         <h1>Mathematical Physics Seminars (Unimore)</h1>
         <p>Department of Physics, Informatics and Mathematics, University of Modena and Reggio Emilia, Via Campi 213/B, 41121 Modena (MO),.</p>
     </header>
 
-    <section id="schedule">
-        <h2>Schedule</h2>
-        <ul id="seminar-list">
-            <!-- Seminar details will go here -->
-        </ul>
-    </section>
+  <!-- Main content -->
+  <main>
+  
+    <h2>Future Speakers</h2>
+    <ul id="futureSpeakers">
+      <!-- Future speakers will be populated here -->
+    </ul>
+    <h2>Past Speakers</h2>
+    <ul id="pastSpeakers">
+      <!-- Past speakers will be populated here -->
+    </ul>
 
-    <footer>
-        <p>&copy; 2023 Unimore. Contact: <a href="https://personale.unimore.it/Rubrica/dettaglio/rfrassek" style="color: #ffffff">Rouven Frassek</a>.</p>
-    </footer>
+  </main>
 
-    <script src="script.js"></script>
+  <!-- Speaker abstract popups -->
+  <div id="speakerPopups">
+    <!-- Popup containers for speaker abstracts will be added dynamically here -->
+  </div>
+
+  <!-- JavaScript code -->
+<script src="script.js"></script>
 </body>
 </html>
+
