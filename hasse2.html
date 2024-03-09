@@ -1,0 +1,243 @@
+<html>
+<head>
+  <title>HASSE</title>
+  <meta charset="utf-8" />
+<style>
+  html, body{
+    width: 100%;
+    height: 100%;
+  }
+  
+  #graph {
+    display: inline-block;
+    border: 1px solid #000;
+    width: 1000px;
+    height: 1000px;
+  }
+  #control {
+    display: inline-block;
+  }
+</style>
+</head>
+
+<body>
+  <div id="graph"></div>  
+  <div id="control">
+    <label for="n">n</label><input id="n" type="number" value="7"><br>
+    <label for="bosons">bosons</label><input id="bosons" type="number" value="7"></br>
+    <label for="xstrength">xstrength</label><input id="xstrength" type="number" value="0.1"></br>
+    <label for="ystrength">ystrength</label><input id="ystrength" type="number" value="1"></br>
+    <label for="ytarget">ytarget</label><input id="ytarget" type="number" value="50"></br>
+    <label for="linkdist">linkdist</label><input id="linkdist" type="number" value="50"></br>
+    <label for="linkiter">linkiter</label><input id="linkiter" type="number" value="5"></br>
+    <label for="linkstrength">linkstrength</label><input id="linkstrength" type="number" value="0.1"></br>
+    <label for="collideiter">collideiter</label><input id="collideiter" type="number" value="3"></br>
+    <label for="charge">charge</label><input id="charge" type="number" value="-30"></br>
+    <button id="render">RENDER</button>
+  </div>
+</body>
+<footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.1.1/d3.min.js"></script>    
+<script>
+
+function levenshtein(a, b) {
+  if (a.length === 0) return b.length
+  if (b.length === 0) return a.length
+  let tmp, i, j, prev, val, row;
+  // swap to save some memory O(min(a,b)) instead of O(a)
+  if (a.length > b.length) {
+    tmp = a
+    a = b
+    b = tmp
+  }
+
+  row = Array(a.length + 1)
+  // init the row
+  for (i = 0; i <= a.length; i++) {
+    row[i] = i
+  }
+
+  // fill in the rest
+  for (i = 1; i <= b.length; i++) {
+    prev = i
+    for (j = 1; j <= a.length; j++) {
+      if (b[i - 1] === a[j - 1]) {
+        val = row[j - 1] // match
+      } else {
+        val = Math.min(row[j - 1] + 1, // substitution
+              Math.min(prev + 1,     // insertion
+                       row[j] + 1))  // deletion
+      }
+      row[j - 1] = prev
+      prev = val
+    }
+    row[a.length] = prev
+  }
+  return row[a.length]
+}
+
+
+
+
+    var width,height
+    var chartWidth, chartHeight
+    var margin
+var svg = d3.select("#graph").append("svg")
+
+var simulation;
+
+
+
+svg.append("svg:defs").append("svg:marker")
+    .attr("id", "triangle")
+    .attr("refX", 3)
+    .attr("refY", 3)
+    .attr("markerWidth", 15)
+    .attr("markerHeight", 15)
+    .attr("orient", "auto")
+    .append("path")
+    .attr("d", "M 0 0 6 3 0 6 1.5 3")
+    .style("fill", "black");
+
+    d3.select('#render').on('click', main);
+
+function main() {
+  if (simulation != undefined) simulation.stop();
+  svg.selectAll("*").remove();
+      var data = makeGraph()        
+        setSize(data)
+        drawChart(data)    
+    }
+
+    function makeGraph() {
+      var nodes = [];
+      var links = [];
+
+      var n = d3.select('#n').property('value');
+      var bosons = d3.select('#bosons').property('value');
+
+      var qs = [""];
+      var qsn;
+
+      for (l=1; l<=n; l++) {
+        qsn = [];
+        qs.forEach(function(q){
+          qsn.push(q+'0');
+          qsn.push(q+'1');
+        });
+        qs = qsn;
+      }
+
+      qs.forEach(function(q){
+        var node = {};
+        node.label = q;
+        node.row = q.split("1").length - 1;
+        node.r = 1;
+        //node.x = chartWidth/2;
+        //node.y = chartHeight/2;
+        nodes.forEach(function(on) {
+          if (levenshtein(on.label,q)==1) {
+            links.push({
+              'source': on.label,
+              'target': q,
+              'type': ( (levenshtein(on.label.slice(0,bosons),q.slice(0,bosons))==1) ? 0 : 1 )
+            });
+          }
+        });
+        nodes.push(node);
+      });
+      return {
+        'links': links,
+        'nodes': nodes,
+        }
+    }
+    
+    function setSize(data) {
+        width = document.querySelector("#graph").clientWidth
+        height = document.querySelector("#graph").clientHeight
+    
+        margin = {top:0, left:0, bottom:0, right:0 }
+        
+        
+        chartWidth = width - (margin.left+margin.right)
+        chartHeight = height - (margin.top+margin.bottom)
+        
+        svg.attr("width", width).attr("height", height)
+        
+        
+    }
+      
+    function drawChart(data) {
+
+
+//Generic gravity for the X position
+var forceX = d3.forceX(function (d) {return 250})
+    .strength(d3.select('#xstrength').property('value'))
+
+//strong y positioning based on row
+var forceY = d3.forceY(function (d) {return (d.row) * d3.select('#ytarget').property('value')})
+    .strength(d3.select('#ystrength').property('value'))
+
+        simulation = d3.forceSimulation()
+        .force("link", d3.forceLink().id(function(d) { return d.label }).distance(d3.select('#linkdist').property('value')).iterations(d3.select('#linkiter').property('value')).strength(d3.select('#linkstrength').property('value')))
+            .force("collide",d3.forceCollide( function(d){return d.r + 1 }).iterations(d3.select('#collideiter').property('value')) )
+            .force("charge", d3.forceManyBody().strength(d3.select('#charge').property('value')))
+            .force("center", d3.forceCenter(chartWidth / 2, chartWidth / 2))
+            .force("y", forceY)
+            .force("x", forceX)
+    
+        var link = svg.append("g")
+            .attr("class", "links")
+            .selectAll("line")
+            .data(data.links)
+            .enter()
+        .append("line")
+      .attr("marker-end", "url(#triangle)")
+            .attr("stroke", "black")
+            .attr("stroke-width", 0.6)
+            .style("stroke-dasharray", function(d){
+              if (d.type==1) {
+                return ("2, 2")
+              } else {
+                return ("1, 0")
+              }
+            })
+          
+        
+        var node = svg.append("g")
+            .attr("class", "nodes")
+            .selectAll("circle")
+            .data(data.nodes)
+            .enter().append("circle")
+            .attr("r", function(d){  return d.r });    
+        
+        
+        var ticked = function() {
+            link
+                .attr("x1", function(d) { return d.source.x; })
+                .attr("y1", function(d) { return d.source.y; })
+                .attr("x2", function(d) { return d.target.x; })
+                .attr("y2", function(d) { return d.target.y; });
+    
+            node
+                .attr("cx", function(d) { return d.x; })
+                .attr("cy", function(d) { return d.y; });
+        }  
+        
+        simulation
+            .nodes(data.nodes)
+            .on("tick", ticked);
+    
+        simulation.force("link")
+            .links(data.links);    
+        
+        
+                
+    }
+
+
+</script>
+I am grateful to David Meidinger for providing the code.
+</footer>
+
+</html>
