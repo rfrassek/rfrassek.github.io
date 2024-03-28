@@ -9,7 +9,8 @@
 
 { date: '09/05/2024', speaker: 'Gunter Schuetz',affiliation: 'Lisbon', title:  'n/a'   , abstract:  'n/a'   },
 
-{ date: '11/04/2024', speaker: 'Andrea Cavaglia',affiliation: 'Torino', title: 'n/a'    , abstract:   'n/a'  },
+{ date: '11/04/2024', speaker: 'Andrea Cavaglia',affiliation: 'Torino', title: 'Studying N=4 super Yang-Mills theory with integrability and conformal
+bootstrap'    , abstract:   'n/a'  },
 
 { date: '10/04/2024', speaker: 'Nicolo Primi',affiliation: 'Torino', title: 'n/a'    , abstract:   'n/a'  },
 
