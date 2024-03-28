@@ -11,6 +11,8 @@
 
 { date: '11/04/2024', speaker: 'Andrea Cavaglia',affiliation: 'Torino', title: 'n/a'    , abstract:   'n/a'  },
 
+{ date: '10/04/2024', speaker: 'Nicolo Primi',affiliation: 'Torino', title: 'n/a'    , abstract:   'n/a'  },
+
 { date: '04/12/2023', speaker: 'Chiara Paletta',affiliation: 'Ljubljana', title: 'Hidden strong symmetries in a range 3 deformation of the Hubbard model' , abstract: 'We examine a spin chain representing an open quantum system governed by the Lindblad equation, with external driving acting in the bulk. This model corresponds to a new integrable range 3 elliptic deformation of the Hubbard model. We show the appearance of multiple nonequilibrium steady states (NESS): the system retains memory of the initial state, even though the well-known invariance under spin su(2) and charge su(2) transformations of the Hubbard Hamiltonian is broken. We motivate this phenomenon by the existence of hidden strong symmetries in the form of quasi-local operators. Based on the works 2301.01612 and 2305.01922 with M. de Leeuw, B. Pozsgay and E. Vernier.' },
 
 
