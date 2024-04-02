@@ -9,9 +9,9 @@
 
 { date: '09/05/2024', speaker: 'Gunter Schuetz',affiliation: 'Lisbon', title:  'n/a'   , abstract:  'n/a'   },
 
-{ date: '11/04/2024', speaker: 'Andrea Cavaglia',affiliation: 'Torino', title: 'Studying N=4 super Yang-Mills theory with integrability and conformal bootstrap'    , abstract:   'n/a'  },
+{ date: '11/04/2024', speaker: 'Andrea Cavaglia',affiliation: 'Torino', title: 'Studying N=4 super Yang-Mills theory with integrability and conformal bootstrap'    , abstract:   'I will discuss an interplay between two different methods, namely integrability and the numerical conformal bootstrap, to study of N=4 Super Yang-Mills theory. On the integrability side, I will describe an exact method to compute exactly the spectrum of the theory by solving a complex analysis problem, known as quantum spectral curve. Then, we will see how the knowledge of the spectrum, joined with local constraints typical of conformal field theories, allows to bootstrap with great precision other more complicated observables, for example the value of a 4-point correlator. The setup considered will be the one of observables living on a supersymmetric Wilson line. Based on works with N. Gromov, J. Julius, M. Preti and N. Sokolova.'  },
 
-{ date: '10/04/2024', speaker: 'Nicolo Primi',affiliation: 'Torino', title: 'n/a'    , abstract:   'n/a'  },
+{ date: '10/04/2024', speaker: 'Nicolo Primi',affiliation: 'Torino', title: 'Form factors for integrable spin chains via Separation of Variables'    , abstract:   'n/a'  },
 
 { date: '04/12/2023', speaker: 'Chiara Paletta',affiliation: 'Ljubljana', title: 'Hidden strong symmetries in a range 3 deformation of the Hubbard model' , abstract: 'We examine a spin chain representing an open quantum system governed by the Lindblad equation, with external driving acting in the bulk. This model corresponds to a new integrable range 3 elliptic deformation of the Hubbard model. We show the appearance of multiple nonequilibrium steady states (NESS): the system retains memory of the initial state, even though the well-known invariance under spin su(2) and charge su(2) transformations of the Hubbard Hamiltonian is broken. We motivate this phenomenon by the existence of hidden strong symmetries in the form of quasi-local operators. Based on the works 2301.01612 and 2305.01922 with M. de Leeuw, B. Pozsgay and E. Vernier.' },
 
