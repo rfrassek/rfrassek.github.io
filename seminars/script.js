@@ -3,6 +3,10 @@
  
     // Sample seminar data
   var seminars = [
+    
+{ date: '05/06/2024', speaker: 'Sasha Tsymbaliuk',affiliation: 'Purdue', title: 'Simple Lie algebras and Weyl character formula II'    , abstract:  'This mini course provides a quick overview to the classification of simple Lie algebras through the combinatorics of root systems, emphasizing the famous Weyl character formula and the key ingredients entering its formulation and proof. An important role is played by category O, and we shall end with mentioning Bernstein-Gelfand-Gelfand resolution categorifying the Weyl formula.'   },
+  
+{ date: '04/06/2024', speaker: 'Sasha Tsymbaliuk',affiliation: 'Purdue', title: 'Simple Lie algebras and Weyl character formula I'    , abstract:  'This mini course provides a quick overview to the classification of simple Lie algebras through the combinatorics of root systems, emphasizing the famous Weyl character formula and the key ingredients entering its formulation and proof. An important role is played by category O, and we shall end with mentioning Bernstein-Gelfand-Gelfand resolution categorifying the Weyl formula.'   },
   
     
 { date: '16/05/2024', speaker: 'Zoltan Bajnok',affiliation: 'Budapest', title: 'Resurgence for the energy densities in integrable models '    , abstract:  'In this talk I will consider the energy density of integrable scattering theories, which can be calculated using a linear integral equation. These include the Gaudin-Yang and Lieb-Liniger models as well as integrable quantum field theories in which a conserved charge is coupled to an external field. It will include Love equation, which describe the capacity of the circular plate capacitor. I will explain how these equations can be expanded perturbatively and investigate the asymptotic properties of the perturbative coefficients. The factorially growing perturbative coefficients imply non-perturbative corrections. I will construct the full trans-series, which contains all non-perturbative corrections together with their own perturbative series.'   },
