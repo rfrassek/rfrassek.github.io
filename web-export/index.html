@@ -53,11 +53,11 @@
       fill(0);
       textSize(24);
       textAlign(CENTER, CENTER);
-      text("Drag me around and press any key to reset", width / 2, 30);
+      text("Move the red line up here to check Yangian invariance!", width / 2, 30);
 
       // Check for collision
       if (checkCollision(imgX, imgY, img.width, img.height, width / 2 - textWidth("Drag me around and press any key to reset") / 2, 15, textWidth("Drag me around and press any key to reset"), 30)) {
-        message = "Collision detected!";
+        message = "YANGIAN INVARIANT!";
       } else {
         message = "";
       }
