@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>p5.js Draggable Images with Border and Text</title>
+  <title>p5.js Draggable Images with Border, Text, and Collision Detection</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 <body>
@@ -11,6 +11,7 @@
     let img, bg;
     let offsetX, offsetY;
     let dragging = false;
+    let message = "";
 
     function preload() {
       bg = loadImage('pro1.png', 
@@ -52,7 +53,21 @@
       fill(0);
       textSize(24);
       textAlign(CENTER, CENTER);
-      text("Move the red line up here to check Yangian invariance!", width / 2, 30);
+      text("Drag me around and press any key to reset", width / 2, 30);
+
+      // Check for collision
+      if (checkCollision(imgX, imgY, img.width, img.height, width / 2 - textWidth("Drag me around and press any key to reset") / 2, 15, textWidth("Drag me around and press any key to reset"), 30)) {
+        message = "Collision detected!";
+      } else {
+        message = "";
+      }
+
+      // Draw the message if there is a collision
+      if (message) {
+        textSize(32);
+        fill(255, 0, 0);
+        text(message, width / 2, height / 2);
+      }
     }
 
     function mousePressed() {
@@ -75,6 +90,11 @@
       imgX = 30;
       imgY = 480;
     }
+
+    function checkCollision(x1, y1, w1, h1, x2, y2, w2, h2) {
+      return x1 < x2 + w2 && x1 + w1 > x2 && y1 < y2 + h2 && y1 + h1 > y2;
+    }
   </script>
 </body>
-</html> 
+</html>
+
