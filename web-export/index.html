@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>p5.js Draggable Images</title>
+  <title>p5.js Draggable Images with Border and Text</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 <body>
@@ -33,12 +33,26 @@
 
     function draw() {
       if (!bg || !img) return; // Don't proceed if images are not loaded
-      background(bg);
+      background(255); // White background
+
+      // Draw background image with border
+      stroke(0); // Black border
+      strokeWeight(2); // Border thickness
+      image(bg, 2, 2, width - 4, height - 4); // Leave space for border
+      
+      // Draw draggable image
       if (dragging) {
         imgX = mouseX - offsetX;
         imgY = mouseY - offsetY;
       }
       image(img, imgX, imgY);
+
+      // Draw text sentence
+      noStroke();
+      fill(0);
+      textSize(24);
+      textAlign(CENTER, CENTER);
+      text("Move the red line up to check Yangian invariance!", width / 2, 30);
     }
 
     function mousePressed() {
@@ -62,6 +76,5 @@
       imgY = 480;
     }
   </script>
-Move the red line up to check Yangian invariance!
 </body>
-</html>
+</html> 
