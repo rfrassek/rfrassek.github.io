@@ -56,7 +56,7 @@
       text("Move the red line up here to check Yangian invariance!", width / 2, 30);
 
       // Check for collision
-      if (checkCollision(imgX, imgY, img.width, img.height, width / 2 - textWidth("Drag me around and press any key to reset") / 2, 15, textWidth("Drag me around and press any key to reset"), 30)) {
+      if (checkCollision(imgX, imgY, img.width, img.height, width / 2 - textWidth("Move the red line up here to check Yangian invariance!") / 2, 15, textWidth("Move the red line up here to check Yangian invariance!"), 30)) {
         message = "YANGIAN INVARIANT!";
       } else {
         message = "";
