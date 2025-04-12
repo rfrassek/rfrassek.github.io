@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FutureTech Conference 2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #2b2d42;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    section {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    h2 {
+      color: #2b2d42;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    input, textarea {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #2b2d42;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #1a1c2e;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #ddd;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FutureTech Conference 2025</h1>
+    <p>April 25–27, 2025 | San Francisco, CA</p>
+  </header>
+
+  <section>
+    <h2>About the Conference</h2>
+    <p>
+      Join industry leaders, developers, and entrepreneurs for three days of
+      innovation, networking, and cutting-edge discussions at FutureTech 2025.
+      Explore the future of AI, robotics, blockchain, and more.
+    </p>
+  </section>
+
+  <section>
+    <h2>Register Now</h2>
+    <form id="registration-form">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <input type="text" name="company" placeholder="Company or Organization" />
+      <textarea name="message" placeholder="Any comments or questions?" rows="4"></textarea>
+      <button type="submit">Submit Registration</button>
+    </form>
+    <p id="confirmation" style="color: green; display: none; margin-top: 10px;">Thanks for registering!</p>
+  </section>
+
+  <footer>
+    &copy; 2025 FutureTech Conference. All rights reserved.
+  </footer>
+
+  <script>
+    // Simple confirmation without backend
+    document.getElementById("registration-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      document.getElementById("confirmation").style.display = "block";
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
+
