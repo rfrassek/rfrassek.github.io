@@ -173,7 +173,8 @@
 
         input[type="text"],
         input[type="email"],
-        textarea {
+        textarea,
+        select {
             width: 100%;
             padding: 15px;
             border: 2px solid #81c784;
@@ -185,7 +186,8 @@
 
         input[type="text"]:focus,
         input[type="email"]:focus,
-        textarea:focus {
+        textarea:focus,
+        select:focus {
             outline: none;
             border-color: #ff4081;
             box-shadow: 0 4px 6px rgba(255, 64, 129, 0.3);
@@ -361,11 +363,74 @@
             color: #333;
             line-height: 1.8;
         }
+
+        #diversity {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 35px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            border: 3px solid #b39ddb;
+        }
+
+        #diversity h2 {
+            color: #2196f3;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: bold;
+            letter-spacing: -0.02em;
+            text-decoration: underline;
+            text-decoration-color: #b0bec5;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: text-focus-in 1s ease both;
+        }
+
+        #diversity p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        #rules {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 35px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            border: 3px solid #b39ddb;
+        }
+
+        #rules h2 {
+            color: #e65100;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: bold;
+            letter-spacing: -0.02em;
+            text-decoration: underline;
+            text-decoration-color: #ffb74d;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: text-focus-in 1s ease both;
+        }
+
+        #rules ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        #rules li {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.7;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Integrability in the pianura padana</h1>
+        <h1>My Workshop</h1>
         <div class="header-gifs">
             <div class="header-gif" style="background-color: #4CAF50;">1/2</div>
             <div class="header-gif" style=" background-color: #00BCD4;">1</div>
@@ -379,6 +444,8 @@
             <p>Date: June 3rd - June 5th</p>
             <p>[A brief description of the workshop and its objectives.  Target audience, key takeaways, etc.]</p>
         </section>
+
+
 
         <section id="schedule">
             <h2>Event Schedule (June 3rd - June 5th)</h2>
@@ -444,9 +511,42 @@
             <p>Coming Soon! Check back later for the list of registered participants.</p>
             </section>
 
+        <section id="diversity">
+            <h2>Diversity Statement</h2>
+            <p>
+                [Your Workshop Name] is dedicated to providing a welcoming and inclusive environment for all participants.
+                We believe that a diverse community enriches the learning experience and fosters innovation. We are committed to ensuring that everyone
+                feels respected, valued, and has equal opportunities to participate and contribute.
+            </p>
+            <p>
+                Any form of discrimination or harassment is strictly prohibited and will not be tolerated. Participants are expected to treat each other with kindness, empathy, and respect.
+            </p>
+        </section>
+
+        <section id="rules">
+            <h2>Rules of Behavior</h2>
+            <p>To ensure a positive and productive experience for all participants, we ask that you adhere to the following rules of behavior:</p>
+            <ul>
+                <li><b>Respect:</b> Treat all participants, organizers, and speakers with respect and courtesy.</li>
+                <li><b>Inclusivity:</b> Be mindful of the diverse backgrounds and perspectives of others. Avoid making assumptions or generalizations.</li>
+                <li><b>Communication:</b> Communicate openly and respectfully. Listen actively to others and be willing to learn from them.</li>
+                <li><b>Professionalism:</b> Maintain a professional demeanor at all times. Avoid disruptive or disrespectful behavior.</li>
+                <li><b>Confidentiality:</b> Respect the confidentiality of any information shared during the workshop that is meant to be private.</li>
+                <li><b>Participation:</b> Engage actively in the workshop activities and contribute positively to the learning environment.</li>
+                <li><b>Responsibility:</b> Take responsibility for your own actions and be accountable for your behavior.</li>
+                <li><b>No Harassment:</b> Harassment of any kind, including verbal, physical, or visual, is strictly prohibited.</li>
+                <li><b>Feedback:</b> Provide constructive feedback in a respectful manner. Be open to receiving feedback from others.</li>
+                <li><b>Technology Use:</b> Use technology in a respectful and non-disruptive manner.</li>
+                <li><b>Breaks and Time Management:</b> Be punctual and respectful of scheduled breaks and session times.</li>
+                <li><b>Cleanliness:</b> Help maintain a clean and organized workshop environment.</li>
+                <li><b>Safety:</b> Be aware of your surroundings and act in a safe and responsible manner.  Report any safety concerns to the organizers.</li>
+                <li><b>Compliance:</b>  Adhere to these rules of behavior and any additional guidelines provided by the workshop organizers.</li>
+            </ul>
+        </section>
+
         <section id="registration">
             <h2>Registration Form</h2>
-            <form action="[YOUR_SUBMISSION_HANDLER]" method="post">
+            <form action="handle_registration.php" method="post">
                 <div>
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
@@ -458,6 +558,15 @@
                 <div>
                     <label for="message">Message:</label>
                     <textarea id="message" name="message"></textarea>
+                </div>
+                <div>
+                    <label for="display_on_website">Display on Website:</label>
+                    <input type="checkbox" id="display_on_website" name="display_on_website" value="yes">
+                    <span style="font-size: 0.9em; color: #555;">Check to display your name on the participant list</span>
+                </div>
+                <div>
+                    <label for="human_check">Verify you are human: 1 + 8 = </label>
+                    <input type="text" id="human_check" name="human_check" required>
                 </div>
                 <button type="submit">Register Now</button>
             </form>
