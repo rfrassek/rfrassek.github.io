@@ -513,6 +513,7 @@
 
         <section id="diversity">
             <h2>Diversity Statement</h2>
+            
             <p>
                 [Your Workshop Name] is dedicated to providing a welcoming and inclusive environment for all participants.
                 We believe that a diverse community enriches the learning experience and fosters innovation. We are committed to ensuring that everyone
@@ -542,11 +543,19 @@
                 <li><b>Safety:</b> Be aware of your surroundings and act in a safe and responsible manner.  Report any safety concerns to the organizers.</li>
                 <li><b>Compliance:</b>  Adhere to these rules of behavior and any additional guidelines provided by the workshop organizers.</li>
             </ul>
+            
+             It is important to be aware of and respect intellectual property rights. The following principles should be adhered to:
+
+    Attribution: Always give credit when using the work or ideas of others.
+    Permission: Obtain permission before reproducing or distributing copyrighted material.
+    Originality: Ensure that your contributions are original and do not infringe upon the intellectual property of others.
+    Confidentiality: Respect the confidentiality of any disclosed information.
+
         </section>
 
         <section id="registration">
             <h2>Registration Form</h2>
-            <form action="handle_registration.php" method="post">
+            <form action="https://formspree.io/f/mjkylndr" method="post">
                 <div>
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
@@ -568,6 +577,7 @@
                     <label for="human_check">Verify you are human: 1 + 8 = </label>
                     <input type="text" id="human_check" name="human_check" required>
                 </div>
+                <input type="hidden" name="_subject" value="New Workshop Registration">
                 <button type="submit">Register Now</button>
             </form>
         </section>
