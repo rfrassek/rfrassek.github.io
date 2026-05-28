@@ -1,13 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All around Integrability II</title>
-
     <style>
-
         body {
             font-family: 'Arial Black', sans-serif;
             margin: 0;
@@ -26,7 +23,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
         }
 
         header h1 {
@@ -57,26 +53,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* 🌺 Papavero rosso */
-
-        .papavero {
-            position: absolute;
-            top: 12px;
-            right: 18px;
-            font-size: 1.8em;
-            transform: rotate(-15deg);
-            animation: papavero-float 3s ease-in-out infinite alternate;
-            filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.4));
-        }
-
-        @keyframes papavero-float {
-            from {
-                transform: rotate(-15deg) translateY(0px);
-            }
-            to {
-                transform: rotate(-10deg) translateY(-5px);
-            }
-        }
 
         main {
             padding: 25px;
@@ -108,8 +84,8 @@
             letter-spacing: -0.02em;
             text-decoration: underline;
             text-decoration-color: #ffff00;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            animation: text-focus-in 1s ease both;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Added text shadow to section headings */
+            animation: text-focus-in 1s ease both; /* Apply animation to section headings */
         }
 
         @keyframes text-focus-in {
@@ -125,35 +101,48 @@
 
         #schedule ul {
             list-style-type: square;
+            padding: 0;
             padding-left: 30px;
         }
 
-        #participants {
-            overflow-x: auto;
+        #schedule li {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: none;
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: left center;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: white;
+        #schedule li span {
+            display: block;
+            font-weight: bold;
+            color: #555;
         }
 
-        table th {
-            background-color: #7b1fa2;
-            color: white;
+        #participants ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #participants li {
+            margin: 10px 15px;
+            background-color: #b2ff59;
             padding: 12px;
-            text-align: left;
-            font-size: 1.05em;
+            border-radius: 10px;
+            border: 3px solid #7cb342;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, background-color 0.2s ease;
         }
 
-        table td {
-            padding: 10px;
-            border: 2px solid #ce93d8;
-        }
-
-        table tr:nth-child(even) {
-            background-color: #f3e5f5;
+        #participants li:hover {
+            transform: scale(1.1);
+            background-color: #a5d6a7;
         }
 
         form {
@@ -165,6 +154,48 @@
             border-radius: 15px;
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
             border: 3px solid #4dd0e1;
+        }
+
+        form div {
+            margin-bottom: 25px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #003366;
+            text-transform: uppercase;
+            font-size: 1.1em;
+            letter-spacing: 0.05em;
+            text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.4);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #81c784;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 1.1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #ff4081;
+            box-shadow: 0 4px 6px rgba(255, 64, 129, 0.3);
+        }
+
+        textarea {
+            resize: vertical;
+            height: 150px;
         }
 
         button[type="submit"] {
@@ -187,6 +218,39 @@
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
         }
 
+        #location {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #location iframe {
+            width: 100%;
+            max-width: 700px;
+            height: 400px;
+            border: 6px solid #00b8d4;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        #location img{
+            max-width: 100%;
+            height: auto;
+            margin-top: 15px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 7px rgba(0,0,0,0.4);
+            animation: pulse 3s infinite alternate;
+        }
+
+        #location p{
+            font-size: 1.3em;
+            color: #003366;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.4);
+        }
+
         footer {
             background-color: #212121;
             color: #fff;
@@ -195,34 +259,25 @@
             margin-top: 35px;
             border-top: 5px solid #ffeb3b;
         }
-
-        footer p {
+        footer p{
             font-size: 1.2em;
         }
 
         @media (max-width: 600px) {
-
             header h1 {
                 font-size: 2.5em;
             }
-
             main {
                 padding: 15px;
             }
-
             section {
                 padding: 20px;
             }
-
-            table {
-                font-size: 0.85em;
+             #participants li{
+                margin: 10px 5px;
             }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
+            form {
+                padding: 25px;
             }
         }
 
@@ -254,12 +309,90 @@
         }
 
         .header-gif:nth-child(2) {
+            background-color: #00BCD4;
+            border-color: #e0f7fa;
+        }
+
+        .header-gif:nth-child(3) {
             background-color: #FF5252;
             border-color: #fce4ec;
         }
 
-        #workshop-info,
-        #diversity,
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes color-change {
+            from { border-color: #d4ac0d; }
+            to { border-color: #aed581; }
+        }
+
+        #workshop-info {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 35px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            border: 3px solid #b39ddb;
+            text-align: center;
+        }
+
+        #workshop-info h2{
+            font-size: 3em;
+            color: #ff8f00;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+            letter-spacing: -0.02em;
+            text-outline: 2px solid #e65100;
+            animation: text-shadow-pulse 2s infinite alternate;
+        }
+
+        @keyframes text-shadow-pulse {
+          from { text-shadow: 3px 3px 5px rgba(0,0,0,0.2); }
+          to { text-shadow: 3px 3px 15px rgba(0,0,0,0.5); }
+        }
+
+        #workshop-info p{
+            font-size: 1.3em;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        #diversity {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 35px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            border: 3px solid #b39ddb;
+        }
+
+        #diversity h2 {
+            color: #2196f3;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: bold;
+            letter-spacing: -0.02em;
+            text-decoration: underline;
+            text-decoration-color: #b0bec5;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: text-focus-in 1s ease both;
+        }
+
+        #diversity p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
         #rules {
             background-color: #fff;
             padding: 25px;
@@ -269,282 +402,266 @@
             border: 3px solid #b39ddb;
         }
 
+        #rules h2 {
+            color: #e65100;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: bold;
+            letter-spacing: -0.02em;
+            text-decoration: underline;
+            text-decoration-color: #ffb74d;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: text-focus-in 1s ease both;
+        }
+
+        #rules ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        #rules li {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.7;
+        }
     </style>
 </head>
-
 <body>
+    <header>
+        <h1>All around Integrability II</h1>
+        <div class="header-gifs">
+            <div class="header-gif" style="background-color: #4CAF50;">1/2</div> 
+            <div class="header-gif" style=" background-color: #FF5252;">1/2</div>
+        </div>
+        <h2>Bologna, 22. - 23. June 2026</h2>
+    </header>
 
-<header>
+    <main>
+        <section id="workshop-info">
+            <h2>Workshop on integrable systems</h2>
+            <p>Date: 22. - 23. June 2026</p>
+            <p>The goal of the workshop is to gather researchers from the Po Valley, their nearest and next-to-nearest neighbors, in order to foster discussions on topics related to integrable systems.</p>
+            <p>
+             The topics include: String and gauge theories, Probability,    Quantum physics,    Statistical physics, Condensed matter,    Quantum groups and    Representation theory.
+  </p>
+            <h3>Previous editions:</h3> (<a href="https://rfrassek.github.io/conf/conf25/" target="_blank">Modena 2025</a>)
+  <h2>Mini-course by:
+  </h2>
+  <p style="text-align: left;">
+  <ul style="text-align: left;"> 
+      <li><b>Marco Rossi</b> (Università della Calabria)</li> 
+                <li><b>Niels Benedikter</b> (Università di Milano)</li> 
+                   </ul>
+   </p>
+     <h2>Speakers:
+  </h2>
 
-   
-    <h1>All around Integrability II</h1>
+  <p style="text-align: left;">
+  <ul style="text-align: left;"> 
+                <li>
+                   Nicolò   Brizio	 (Università degli Studi di Padova)
+                </li>
+     
+                <li>
+                   Adam   Chalabi	 (Università di Torino)
+                </li> 
+      
+                <li>
+                   Giacomo Gori	 (CNR)
+                </li> 
+  </p>
+            </ul> 
+  <p style="text-align: left;">
+<h3>Programm: (<a href="Talks26.pdf" target="_blank">Titles and Abstracts</a>)</h3>
+   </p>
+        </section>
 
-    <div class="header-gifs">
-        <div class="header-gif" style="background-color: #4CAF50;">1/2</div>
-        <div class="header-gif" style="background-color: #FF5252;">1/2</div>
+ <section id="organisation">
+            <h2>Organisation committee</h2>
+            <ul> 
+                <li>
+                   Andrea Cavaglià (University of Turin)
+                </li>
+                <li>
+                   Davide Fioravanti (University of Bologna)
+                </li>
+                <li>
+               Rouven Frassek (University of Modena and Reggio Emilia)
+                </li>
+                <li>
+                  Chiara Paletta (University of Ljubljana)
+                </li>
+                <li>
+                   Francesco Ravanini (University of Bologna)
+                </li>
+                <li>
+               Andrea Trombettoni (University of Trieste)
+                </li>                
+                
+            </ul>
+            The workshop is supported by the  PRIN project CUP-E53D23002220006, FAR UNIMORE project CUP-E93C23002040005 and INFN Bologna.
+        </section>
+
+      <section id="schedule">
+    <h3>Preliminary schedule (<a href="Talks26.pdf" target="_blank">Titles and Abstracts</a>)</h3>
+
+    <!-- Day 1 (Opening Afternoon) -->
+    <h2>Day 1 – Half Day</h2> 
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">14:00–15:30</span> Lecture 1
+    </div> 
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">15:30–16:00</span> Coffee Break/Discussion
+    </div> 
+           <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">16:00–16:30</span> Seminar 0
     </div>
-
-    <h2>Bologna, 22. - 23. June 2026</h2>
-
-</header>
-
-<main>
-
-<section id="workshop-info">
-
-    <h2>Workshop on integrable systems</h2>
-
-    <p>Date: 22. - 23. June 2026</p>
-
-<p style="text-align: center;"> The goal of the workshop is to gather researchers from the Po Valley (🌺), their nearest and next-to-nearest neighbors, in order to foster discussions on topics related to integrable systems. </p>
-
-    <p>
-        The topics include:
-        String and gauge theories,
-        Probability,
-        Quantum physics,
-        Statistical physics,
-        Condensed matter,
-        Quantum groups and
-        Representation theory.
-    </p>
-
-    <h3>Previous editions:</h3>
-
-    <p>
-        (<a href="https://rfrassek.github.io/conf/conf25/" target="_blank">Modena 2025</a>)
-    </p>
-
-    <h2>Mini-course by:</h2>
-
-    <div style="text-align:left;">
-
-        <ul>
-            <li><b>Marco Rossi</b> (Università della Calabria)</li>
-            <li><b>Niels Benedikter</b> (Università di Milano)</li>
-        </ul>
-
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">16:30–17:00</span> Seminar 1
     </div>
-
-    <h2>Speakers:</h2>
-
-    <div style="text-align:left;">
-
-        <ul>
-            <li>Nicolò Brizio (Università degli Studi di Padova)</li>
-            <li>Adam Chalabi (Università di Torino)</li>
-            <li>Giacomo Gori (CNR)</li>
-        </ul>
-
+    <div style="margin-bottom: 5px;"> 
+        <span style="display: inline-block; width: 180px;">17:00–17:30</span> Seminar 2  
     </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">17:30–18:00</span> Seminar 3  
+    </div>
+          
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">18:00–19:00</span>  Discussion 
+    </div>
+ 
 
-    <h3>
-        Program:
-        (<a href="Talks26.pdf" target="_blank">Titles and Abstracts</a>)
-    </h3>
-
+    <!-- Day 2 (Closing Morning) -->
+    <h2>Day 2 – Half Day</h2> 
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">09:00–10:30</span> Lecture 2
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">10:30–11:00</span> Coffee Break
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">11:00–11:30</span> Seminar 4
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">11:30–12:00</span> Seminar 5
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">12:00–12:30</span> Seminar 6
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">12:30–14:00</span> Lunch
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">14:00–14:30</span> Seminar 7
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">14:30–15:00</span> Seminar 8
+    </div>
+   <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">15:00–15:30</span> Seminar 9
+    </div>  
 </section>
 
-<section id="organisation">
 
-    <h2>Organisation committee</h2>
+        <section id="participants">
+            <h2>List of Participants</h2>
+      <table border="1">
+    <thead>
+        <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Affiliation</th>
+        </tr>
+    </thead>
+    <tbody> 
+<tr><td>Cavaglia</td><td>Andrea</td><td>University of Torino</td></tr> 
+<tr><td>Fioravanti</td><td>Davide</td><td>INFN and Univ. of Bologna</td></tr>
+<tr><td>Frassek</td><td>Rouven</td><td>Unimore</td></tr> 
+<tr><td>Paletta</td><td>Chiara</td><td>University of Ljubljana</td></tr> 
+<tr><td>Ravanini</td><td>Francesco</td><td>Università di Bologna</td></tr> 
+<tr><td>Brizio</td><td>Nicolò</td><td>Università degli Studi di Padova</td></tr> 
+<tr><td>Olivi</td><td>Francesco</td><td>Università di Bologna</td></tr> 
+<tr><td>Mannatzu</td><td>Michelangelo</td><td>Unifi</td></tr> 
+<tr><td>Maroncelli</td><td>Andrea</td><td>Università di Firenze</td></tr> 
+<tr><td>Tateo</td><td>Roberto</td><td>Università di Torino</td></tr> 
+<tr><td>Chalabi</td><td>Adam</td><td>Università di Torino</td></tr> 
+<tr><td>Trombettoni</td><td>Andrea</td><td>Università di Trieste</td></tr> 
+<tr><td>Gori</td><td>Giacomo</td><td>CNR INO</td></tr> 
+<tr><td>Rossi</td><td>Marco</td><td>Università della Calabria</td></tr> 
+<tr><td>Benedikter</td><td>Niels</td><td>Università degli Studi di Milano</td></tr> 
+       
+ 
+        
+         
+    </tbody>
+</table>
+            </section>
 
-    <ul>
-        <li>Andrea Cavaglià (University of Turin)</li>
-        <li>Davide Fioravanti (University of Bologna)</li>
-        <li>Rouven Frassek (University of Modena and Reggio Emilia)</li>
-        <li>Chiara Paletta (University of Ljubljana)</li>
-        <li>Francesco Ravanini (University of Bologna)</li>
-        <li>Andrea Trombettoni (University of Trieste)</li>
-    </ul>
+        <section id="diversity">
+            <h2>Code of conduct</h2>
+            
+            <p>
+                The meeting is dedicated to providing a welcoming and inclusive environment for all participants.
+                 We are committed to ensure that everyone
+                feels respected, valued and included,  regardless of their role or experience.                 
+            We also ask to give credit when using the work or ideas of others and to respect the confidentiality of unpublished results.
+                  
+            </p>
+         
+            
+        </section> 
 
-    <p>
-        The workshop is supported by the PRIN project CUP-E53D23002220006,
-        FAR UNIMORE project CUP-E93C23002040005
-        and INFN Bologna.
-    </p>
+        <section id="registration">
+            <h2>Registration and Contact Form</h2>
+            
+             <p style="text-align: center;"> 
+            <a href=" https://docs.google.com/forms/d/e/1FAIpQLSf-BhP15JW7L9CMiOcJ3Oa0Zj_9Dv_76jf835j1v0hYGNNoOw/viewform?usp=preview" target="_blank">Registration form</a>
+            
+            </p>
+            
+            
+        </section>
+        
+        
+ <section id="dinner">
+            <h2>Social Dinner</h2>
+            <p>The social dinner will be held at:</p>
+            <p>Lambrusco e Tigelle<br>
+           Via Ferruccio Garavaglia 5b,<br>
+             40127 Bologna BO<br> 
+     
+            </p>
+            <a href="https://www.openstreetmap.org/node/1630475214" target="_blank">View on OpenStreetMaps</a>
+ 
+        </section>
 
-</section>
+        <section id="location">
+            <h2>Location</h2>
+            <p>The workshop will be held at:</p>
+            <p>University of Bologna<br>
+            Department of Physics<br>
+            Via Irnerio, 46, 40126 Bologna BO<br> 
+     
+            </p>
+            <a href="https://osm.org/go/xdUSSeeIL?node=1704279356" target="_blank">View on OpenStreetMaps</a>
+ 
+        </section>
 
-<section id="schedule">
-
-    <h2>Preliminary schedule</h2>
-
-    <p>
-        <a href="Talks26.pdf" target="_blank">Titles and Abstracts</a>
-    </p>
-
-    <h2>Day 1 – Half Day</h2>
-
-    <ul>
-        <li>14:00–15:30 — Lecture 1</li>
-        <li>15:30–16:00 — Coffee Break / Discussion</li>
-        <li>16:00–16:30 — Seminar 0</li>
-        <li>16:30–17:00 — Seminar 1</li>
-        <li>17:00–17:30 — Seminar 2</li>
-        <li>17:30–18:00 — Seminar 3</li>
-        <li>18:00–19:00 — Discussion</li>
-    </ul>
-
-    <h2>Day 2 – Half Day</h2>
-
-    <ul>
-        <li>09:00–10:30 — Lecture 2</li>
-        <li>10:30–11:00 — Coffee Break</li>
-        <li>11:00–11:30 — Seminar 4</li>
-        <li>11:30–12:00 — Seminar 5</li>
-        <li>12:00–12:30 — Seminar 6</li>
-        <li>12:30–14:00 — Lunch</li>
-        <li>14:00–14:30 — Seminar 7</li>
-        <li>14:30–15:00 — Seminar 8</li>
-        <li>15:00–15:30 — Seminar 9</li>
-    </ul>
-
-</section>
-
-<section id="participants">
-
-    <h2>List of Participants</h2>
-
-    <table>
-
-        <thead>
-            <tr>
-                <th>Last Name</th>
-                <th>First Name</th>
-                <th>Affiliation</th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-            <tr><td>Cavaglia</td><td>Andrea</td><td>University of Torino</td></tr>
-            <tr><td>Fioravanti</td><td>Davide</td><td>INFN and Univ. of Bologna</td></tr>
-            <tr><td>Frassek</td><td>Rouven</td><td>Unimore</td></tr>
-            <tr><td>Paletta</td><td>Chiara</td><td>University of Ljubljana</td></tr>
-            <tr><td>Ravanini</td><td>Francesco</td><td>Università di Bologna</td></tr>
-            <tr><td>Brizio</td><td>Nicolò</td><td>Università degli Studi di Padova</td></tr>
-            <tr><td>Olivi</td><td>Francesco</td><td>Università di Bologna</td></tr>
-            <tr><td>Mannatzu</td><td>Michelangelo</td><td>Unifi</td></tr>
-            <tr><td>Maroncelli</td><td>Andrea</td><td>Università di Firenze</td></tr>
-            <tr><td>Tateo</td><td>Roberto</td><td>Università di Torino</td></tr>
-            <tr><td>Chalabi</td><td>Adam</td><td>Università di Torino</td></tr>
-            <tr><td>Trombettoni</td><td>Andrea</td><td>Università di Trieste</td></tr>
-            <tr><td>Gori</td><td>Giacomo</td><td>CNR INO</td></tr>
-            <tr><td>Rossi</td><td>Marco</td><td>Università della Calabria</td></tr>
-            <tr><td>Benedikter</td><td>Niels</td><td>Università degli Studi di Milano</td></tr>
-
-        </tbody>
-
-    </table>
-
-</section>
-
-<section id="diversity">
-
-    <h2>Code of conduct</h2>
-
-    <p>
-        The meeting is dedicated to providing a welcoming and inclusive
-        environment for all participants.
-        We are committed to ensure that everyone feels respected,
-        valued and included, regardless of their role or experience.
-    </p>
-
-    <p>
-        We also ask to give credit when using the work or ideas of others
-        and to respect the confidentiality of unpublished results.
-    </p>
-
-</section>
-
-<section id="registration">
-
-    <h2>Registration and Contact Form</h2>
-
-    <p style="text-align:center;">
-
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-BhP15JW7L9CMiOcJ3Oa0Zj_9Dv_76jf835j1v0hYGNNoOw/viewform?usp=preview"
-           target="_blank">
-
-           Registration form
-
-        </a>
-
-    </p>
-
-</section>
-
-<section id="dinner">
-
-    <h2>Social Dinner</h2>
-
-    <p>
-        The social dinner will be held at:
-    </p>
-
-    <p>
-        Lambrusco e Tigelle<br>
-        Via Ferruccio Garavaglia 5b,<br>
-        40127 Bologna BO
-    </p>
-
-    <a href="https://www.openstreetmap.org/node/1630475214" target="_blank">
-        View on OpenStreetMaps
-    </a>
-
-</section>
-
-<section id="location">
-
-    <h2>Location</h2>
-
-    <p>
-        The workshop will be held at:
-    </p>
-
-    <p>
-        University of Bologna<br>
-        Department of Physics<br>
-        Via Irnerio, 46, 40126 Bologna BO
-    </p>
-
-    <a href="https://osm.org/go/xdUSSeeIL?node=1704279356" target="_blank">
-        View on OpenStreetMaps
-    </a>
-
-</section>
-
-<section id="sponsors">
-
-    <h2>Under the Patronage of:</h2>
-
-    <p>
-
-        <img
-            src="https://www.unimore.it/themes/custom/unimore_base/icons/logo.svg"
-            alt="UNIMORE"
-            style="height:80px; margin:15px;"
-        >
-
-        <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqo9pqPUICE42ZooWRiQPJUBT2vECk8WI8Kg&s"
-            alt="INFN Bologna"
-            style="height:80px; margin:15px;"
-        >
-
-    </p>
-
-</section>
-
-</main>
-
-<footer>
-
-    <p>© 2026 Rouven Frassek</p>
-
-</footer>
-
+ <section id="sponsors">
+            <h2> Under the Patronage of:</h2>
+            <p>  <img src="https://www.unimore.it/themes/custom/unimore_base/icons/logo.svg" alt="UNIMORE"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqo9pqPUICE42ZooWRiQPJUBT2vECk8WI8Kg&s" alt="INFN Bologna">
+          <br> 
+     
+            </p> 
+ 
+        </section>
+       
+         
+    </main>
+    <footer>
+        <p>© [2026] Rouven Frassek</p>
+    </footer>
 </body>
 </html>
-```
