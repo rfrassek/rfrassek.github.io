@@ -14,7 +14,44 @@
             line-height: 1.6;
         }
 
-.poppy-inline { position: relative; display: inline-block; width: 14px; height: 14px; margin: 0 3px; transform: rotate(20deg); } .poppy-inline::before, .poppy-inline::after { content: ""; position: absolute; border-radius: 50%; } /* petals */ .poppy-inline::before { width: 14px; height: 14px; background: radial-gradient(circle at 30% 30%, #ff4d4d 0%, #d50000 70%); box-shadow: -5px -2px 0 #e00000, 5px 2px 0 #c40000, -2px 6px 0 #ff1744, 4px -5px 0 #d50000; } /* black center */ .poppy-inline::after { width: 5px; height: 5px; background: black; top: 4px; left: 4px; }        header {
+```html id="cs95fu"
+<style>
+
+    body {
+        font-family: 'Arial Black', sans-serif;
+    }
+
+    /* your other CSS */
+
+    .poppy-inline {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: red;
+        border-radius: 50%;
+        position: relative;
+        top: 1px;
+        margin: 0 2px;
+        box-shadow:
+            -6px 0 red,
+             6px 0 red,
+             0 -6px red,
+             0 6px red;
+    }
+
+    .poppy-inline::after {
+        content: "";
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: black;
+        border-radius: 50%;
+        top: 3.5px;
+        left: 3.5px;
+    }
+
+</style>
+```
             background-color: #6200ea;
             padding: 25px;
             text-align: center;
