@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All around Integrability II</title>
+    <style>
+        body {
+            font-family: 'Arial Black', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4c3;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #6200ea;
+            padding: 25px;
+            text-align: center;
+            color: white;
+            border-bottom: 5px solid #d81b60;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: bold;
+            letter-spacing: -0.05em;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        
+.poppy-inline { display: inline-block; width: 12px; height: 12px; background: red; border-radius: 50%; position: relative; top: 1px; margin: 0 2px; box-shadow: -6px 0 red, 6px 0 red, 0 -6px red, 0 6px red; } .poppy-inline::after { content: ""; position: absolute; width: 5px; height: 5px; background: black; border-radius: 50%; top: 3.5px; left: 3.5px; }
+     
+        
+    header img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 15px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 7px rgba(0,0,0,0.4);
+            animation: spin 5s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+
+        main {
+            padding: 25px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 35px;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            border: 3px solid #ba68c8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        section h2 {
+            color: #ff1744;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: bold;
+            letter-spacing: -0.02em;
+            text-decoration: underline;
+            text-decoration-color: #ffff00;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Added text shadow to section headings */
+            animation: text-focus-in 1s ease both; /* Apply animation to section headings */
+        }
+
+        @keyframes text-focus-in {
+          0% {
+            filter: blur(12px);
+            opacity: 0;
+          }
+          100% {
+            filter: blur(0);
+            opacity: 1;
+          }
+        }
+
+        #schedule ul {
+            list-style-type: square;
+            padding: 0;
+            padding-left: 30px;
+        }
+
+        #schedule li {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: none;
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: left center;
+        }
+
+        #schedule li span {
+            display: block;
+            font-weight: bold;
+            color: #555;
+        }
+
+        #participants ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #participants li {
+            margin: 10px 15px;
+            background-color: #b2ff59;
+            padding: 12px;
+            border-radius: 10px;
+            border: 3px solid #7cb342;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        #participants li:hover {
+            transform: scale(1.1);
+            background-color: #a5d6a7;
+        }
+
+        form {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            border: 3px solid #4dd0e1;
+        }
+
+        form div {
+            margin-bottom: 25px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #003366;
+            text-transform: uppercase;
+            font-size: 1.1em;
+            letter-spacing: 0.05em;
+            text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.4);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #81c784;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 1.1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #ff4081;
+            box-shadow: 0 4px 6px rgba(255, 64, 129, 0.3);
+        }
+
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        button[type="submit"] {
+            background-color: #ffab00;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            font-weight: bold;
+            text-shadow: 2px 2px 3px rgba(0,0,0,0.2);
+        }
+
+        button[type="submit"]:hover {
+            background-color: #f57f17;
+            transform: scale(1.08);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #location {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #location iframe {
+            width: 100%;
+            max-width: 700px;
+            height: 400px;
+            border: 6px solid #00b8d4;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        #location img{
+            max-width: 100%;
+            height: auto;
+            margin-top: 15px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 7px rgba(0,0,0,0.4);
+            animation: pulse 3s infinite alternate;
+        }
+
+        #location p{
+            font-size: 1.3em;
+            color: #003366;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.4);
+        }
+
+        footer {
+            background-color: #212121;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 35px;
+            border-top: 5px solid #ffeb3b;
+        }
+        footer p{
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+            main {
+                padding: 15px;
+            }
+            section {
+                padding: 20px;
+            }
+             #participants li{
+                margin: 10px 5px;
+            }
+            form {
+                padding: 25px;
+            }
+        }
+
+        .header-gifs {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+            gap: 15px;
+        }
+
+        .header-gif {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            border: 4px solid #f4e3cf;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.2s ease-in-out;
+            font-size: 1.5em;
+            color: white;
+        }
+
+        .header-gif:hover {
+            transform: scale(1.1);
+        }
+
+        .header-gif:nth-child(2) {
+            background-color: #00BCD4;
+            border-color: #e0f7fa;
+        }
+
+        .header-gif:nth-child(3) {
+            background-color: #FF5252;
+            border-color: #fce4ec;
+        }
+
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes color-change {
+            from { border-color: #d4ac0d; }
+            to { border-color: #aed581; }
+        }
+
+        #workshop-info {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 35px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            border: 3px solid #b39ddb;
+            text-align: center;
+        }
+
+        #workshop-info h2{
+            font-size: 3em;
+            color: #ff8f00;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+            letter-spacing: -0.02em;
+            text-outline: 2px solid #e65100;
+            animation: text-shadow-pulse 2s infinite alternate;
+        }
+
+        @keyframes text-shadow-pulse {
+          from { text-shadow: 3px 3px 5px rgba(0,0,0,0.2); }
+          to { text-shadow: 3px 3px 15px rgba(0,0,0,0.5); }
+        }
+
+        #workshop-info p{
+            font-size: 1.3em;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        #diversity {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 35px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            border: 3px solid #b39ddb;
+        }
+
+        #diversity h2 {
+            color: #2196f3;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: bold;
+            letter-spacing: -0.02em;
+            text-decoration: underline;
+            text-decoration-color: #b0bec5;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: text-focus-in 1s ease both;
+        }
+
+        #diversity p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        #rules {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 35px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            border: 3px solid #b39ddb;
+        }
+
+        #rules h2 {
+            color: #e65100;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: bold;
+            letter-spacing: -0.02em;
+            text-decoration: underline;
+            text-decoration-color: #ffb74d;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: text-focus-in 1s ease both;
+        }
+
+        #rules ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        #rules li {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>All around Integrability II</h1>
+        <div class="header-gifs">
+            <div class="header-gif" style="background-color: #4CAF50;">1/2</div> 
+            <div class="header-gif" style=" background-color: #FF5252;">1/2</div>
+        </div>
+        <h2>Bologna, 22. - 23. June 2026</h2>
+    </header>
+
+    <main>
+        <section id="workshop-info">
+            <h2>Workshop on integrable systems</h2>
+            <p>Date: 22. - 23. June 2026</p>
+            <p>The goal of the workshop is to gather researchers from the Po Valley (π-anura) <span class="poppy-inline"></span> , their nearest and next-to-nearest neighbors, in order to foster discussions on topics related to integrable systems.</p>
+            <p>
+             The topics include: String and gauge theories, Probability,    Quantum physics,    Statistical physics, Condensed matter,    Quantum groups and    Representation theory.
+  </p>
+            <h3>Previous editions:</h3> (<a href="https://rfrassek.github.io/conf/conf25/" target="_blank">Modena 2025</a>)
+  <h2>Mini-course by:
+  </h2>
+  <p style="text-align: left;">
+  <ul style="text-align: left;"> 
+      <li><b>Marco Rossi</b> (Università della Calabria) - ODE/IM correspondence</li> 
+                <li><b>Niels Benedikter</b> (Università di Milano) - Luttinger model</li> 
+                   </ul>
+   </p>
+     <h2>Speakers:
+  </h2>
+
+  <p style="text-align: left;">
+  <ul style="text-align: left;"> 
+                <li>
+                   Nicolò   Brizio	 (Università degli Studi di Padova)
+                </li>
+     
+                <li>
+                   Adam   Chalabi	 (Università di Torino)
+                </li> 
+      
+                <li>
+                   Giacomo Gori	 (CNR)
+                </li> 
+ <li>
+                    Olivi	Francesco (Università di Bologna)
+                </li>  <li>
+              	Michelangelo Mannatzu (Università di Firenze)
+                </li> <li>
+              	Pierpaolo Fontana (Università di Trieste)
+                </li> <li>
+              	Nikita Titov (Università di Trieste)
+                </li> <li>
+              	Chiara Paletta (Università di Ljubljana)
+                </li> 
+      
+ <a href="https://rfrassek.github.io/conf/AAI26.pdf" target="_blank"><h3>List of contributions with title and abstract</h3> </a>
+  </p>
+            </ul> 
+ 
+        </section>
+
+ <section id="organisation">
+            <h2>Organisation committee</h2>
+            <ul> 
+                <li>
+                   Andrea Cavaglià (University of Turin)
+                </li>
+                <li>
+                   Davide Fioravanti (University of Bologna)
+                </li>
+                <li>
+               Rouven Frassek (University of Modena and Reggio Emilia)
+                </li>
+                <li>
+                  Chiara Paletta (University of Ljubljana)
+                </li>
+                <li>
+                   Francesco Ravanini (University of Bologna)
+                </li>
+                <li>
+               Andrea Trombettoni (University of Trieste)
+                </li>                
+                
+            </ul>
+            The workshop is supported by the  PRIN project CUP-E53D23002220006, FAR UNIMORE project CUP-E93C23002040005 and INFN Bologna.
+        </section>
+
+      <section id="schedule">
+    <h3>Preliminary schedule </h3>
+
+    <!-- Day 1 (Opening Afternoon) -->
+    <h2>Day 1 – Half Day</h2> 
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">14:00–15:30</span> Marco Rossi
+    </div> 
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">15:30–16:00</span> Coffee Break 
+    </div> 
+           <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">16:00–16:30</span>  Adam   Chalabi
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">16:30–17:00</span> 	Pierpaolo Fontana  
+    </div>
+    <div style="margin-bottom: 5px;"> 
+        <span style="display: inline-block; width: 180px;">17:00–17:30</span> Michelangelo Mannatzu  
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">17:30–18:00</span> Chiara Paletta  
+    </div>
+          
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">18:00–19:00</span>  Discussion 
+    </div>
+ 
+
+    <!-- Day 2 (Closing Morning) -->
+    <h2>Day 2 – Half Day</h2> 
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">09:00–10:30</span> Niels Benedikter
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">10:30–11:00</span> Coffee Break
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">11:00–11:30</span> 	 Giacomo Gori 
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">11:30–12:00</span>Nikita Titov  
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">12:00–12:30</span> 	Francesco Olivi 
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">12:30–13:00</span>  Nicolò   Brizio 
+    </div>
+    <div style="margin-bottom: 5px;">
+        <span style="display: inline-block; width: 180px;">13:00–14:00</span> Lunch
+    </div> 
+    <h2>Titles of the talks </h2> 
+       <li>               Nicolò   Brizio	- More on TTbar and non-linear field theories
+        </li> <li>
+            Francesco Olivi - Unified approach to different bases of Heun equations with applications to gauge and black hole theories
+     </li> <li>
+               Nikita Titov - From Laplacian-to-Adjacency matrix for continuous spins on graphs
+  </li> <li>
+               Michelangelo Mannatzu - The Arctic Curve of the two-periodic Aztec diamond with a vertical bias
+    </li> <li>
+            Pierpaolo Fontana - Renormalized Dual Basis for scalable simulations of higher dimensional lattice gauge theories
+ </li> <li>
+            Giacomo Gori - Local scaling in critical systems via holography 
+ </li> <li>
+           Adam Chalabi - Surface defects and integrability
+ </li>  
+</section>
+
+
+        <section id="participants">
+            <h2>List of Participants</h2>
+      <table border="1">
+    <thead>
+        <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Affiliation</th>
+        </tr>
+    </thead>
+    <tbody> 
+<tr><td>Cavaglia</td><td>Andrea</td><td>University of Torino</td></tr> 
+<tr><td>Fioravanti</td><td>Davide</td><td>INFN and Univ. of Bologna</td></tr>
+<tr><td>Frassek</td><td>Rouven</td><td>Unimore</td></tr> 
+<tr><td>Paletta</td><td>Chiara</td><td>University of Ljubljana</td></tr> 
+<tr><td>Ravanini</td><td>Francesco</td><td>Università di Bologna</td></tr> 
+<tr><td>Brizio</td><td>Nicolò</td><td>Università degli Studi di Padova</td></tr> 
+<tr><td>Olivi</td><td>Francesco</td><td>Università di Bologna</td></tr> 
+<tr><td>Mannatzu</td><td>Michelangelo</td><td>Unifi</td></tr> 
+<tr><td>Maroncelli</td><td>Andrea</td><td>Università di Firenze</td></tr> 
+<tr><td>Tateo</td><td>Roberto</td><td>Università di Torino</td></tr> 
+<tr><td>Chalabi</td><td>Adam</td><td>Università di Torino</td></tr> 
+<tr><td>Trombettoni</td><td>Andrea</td><td>Università di Trieste</td></tr> 
+<tr><td>Gori</td><td>Giacomo</td><td>CNR INO</td></tr> 
+<tr><td>Rossi</td><td>Marco</td><td>Università della Calabria</td></tr> 
+<tr><td>Benedikter</td><td>Niels</td><td>Università degli Studi di Milano</td></tr> 
+<tr><td>Piroli</td><td>Lorenzo</td><td>Università di Bologna</td></tr> 
+<tr><td>Fontana</td><td>Pierpaolo</td><td>University of Trieste</td></tr> 
+<tr><td>Titov</td><td>Nikita</td><td>University of Trieste</td></tr> 
+<tr><td>Kade</td><td>Moritz</td><td>Università di Padova</td></tr> 
+       
+        
+         
+    </tbody>
+</table>
+            </section>
+
+        <section id="diversity">
+            <h2>Code of conduct</h2>
+            
+            <p>
+                The meeting is dedicated to providing a welcoming and inclusive environment for all participants.
+                 We are committed to ensure that everyone
+                feels respected, valued and included,  regardless of their role or experience.                 
+            We also ask to give credit when using the work or ideas of others and to respect the confidentiality of unpublished results.
+                  
+            </p>
+         
+            
+        </section> 
+
+        <section id="registration">
+            <h2>Registration and Contact Form</h2>
+            
+             <p style="text-align: center;"> 
+            <a href=" https://docs.google.com/forms/d/e/1FAIpQLSf-BhP15JW7L9CMiOcJ3Oa0Zj_9Dv_76jf835j1v0hYGNNoOw/viewform?usp=preview" target="_blank">Registration form</a>
+            
+            </p>
+            
+            
+        </section>
+        
+        
+ <section id="dinner">
+            <h2>Social Dinner</h2>
+            <p>The social dinner will be held at:</p>
+            <p>Lambrusco e Tigelle<br>
+           Via Ferruccio Garavaglia 5b,<br>
+             40127 Bologna BO<br> 
+     
+            </p>
+            <a href="https://www.openstreetmap.org/node/1630475214" target="_blank">View on OpenStreetMaps</a>
+ 
+        </section>
+
+        <section id="location">
+            <h2>Location</h2>
+            <p>The workshop will be held at:</p>
+            <p>University of Bologna<br>
+            Department of Physics<br>
+            Via Irnerio, 46, 40126 Bologna BO<br> 
+                Sala Riunioni IR-1A
+     
+            </p>
+            <a href="https://osm.org/go/xdUSSeeIL?node=1704279356" target="_blank">View on OpenStreetMaps</a>
+ 
+        </section>
+
+ <section id="sponsors">
+            <h2> Under the Patronage of:</h2>
+            <p>  <img src="https://www.unimore.it/themes/custom/unimore_base/icons/logo.svg" alt="UNIMORE"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqo9pqPUICE42ZooWRiQPJUBT2vECk8WI8Kg&s" alt="INFN Bologna">
+          <br> 
+     
+            </p> 
+ 
+        </section>
+       
+         
+    </main>
+    <footer>
+        <p>© [2026] Rouven Frassek</p>
+    </footer>
+</body>
+</html>
